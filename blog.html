@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Wisata Bali - Luis Marcello</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+ background:#FDFBF7;
+ color:#333;
+ line-height:1.6;
+}
+
+a{text-decoration:none;color:inherit;}
+
+/* header */
+.header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background-color:#2E4A3D;
+    color:white;
+    padding:20px 50px;
+}
+
+.header-left img{
+  width:120px;
+  height:auto;
+  border-radius:5px
+}
+
+.header-right{
+    text-align:right;
+}
+
+.header-right h1{
+ font-size:24px;
+ margin-bottom:5px;
+ color:#FDFBF7;
+}
+
+.header-right p{
+    font-size:12px;
+    color:#DDE5E0;
+}
+
+/* menu atas */
+.navbar{
+ background:#3A5A4A;
+ display:flex;
+ justify-content:center;
+ padding:10px 0;
+}
+
+.navbar a{
+ color:white;
+ padding:10px 25px;
+ font-weight:bold;
+ transition:background-color .3s;
+}
+
+.navbar a:hover,
+.navbar a.active{
+ background-color:#D35400;
+ border-radius:4px;
+}
+
+
+/* isi blog */
+.blog-container{
+ max-width:1200px;
+ margin:30px auto;
+ padding:20px;
+ background:white;
+ box-shadow:0 2px 5px rgba(0,0,0,.08);
+ border-radius:8px;
+ border-top:4px solid #D35400;
+}
+
+.blog-container h2{
+ border-bottom:2px solid #ccc;
+ padding-bottom:10px;
+ margin-bottom:20px;
+ color:#2E4A3D;
+}
+
+.blog-content h3{
+ color:#D35400;
+ margin-bottom:10px;
+}
+
+.blog-content p{
+ margin-bottom:20px;
+ color:#555;
+}
+
+.back-link{
+ display:inline-block;
+ margin-top:10px;
+ color:#2E4A3D;
+ font-weight:bold;
+ transition:color .3s;
+}
+
+.back-link:hover{
+ color:#D35400;
+ text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxyHQwZaYJ6c-U-sb_7pHnyKAzWoLL_iPrB2Yi8dA5kVNgvJGcrpD0Y7Y&s=10" alt="Logo Wisata">
+  </div>
+
+  <div class="header-right">
+    <h1>Pesona Wisata Bali</h1>
+    <p>Halaman Bagian Blog Perjalanan</p>
+  </div>
+</header>
+
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="index.html#about-section">About</a>
+  <a href="index.html#services-section">Services</a>
+  <a href="blog.html" class="active">Blog</a>
+  <a href="index.html#contactModal">Contact</a>
+</nav>
+
+<!-- konten blog -->
+<div class="blog-container">
+  <h2>Selamat Datang di Cerita Perjalanan Bali</h2>
+
+  <div class="blog-content">
+    <h3>Panduan Liburan ke Pulau Dewata</h3>
+    <p>Ini adalah halaman blog wisata lokal yang terhubung dari menu utama website. Temukan rekomendasi tempat makan terbaik, pantai tersembunyi, serta panduan budget untuk liburan Anda di Bali.</p>
+
+    <a href="index.html" class="back-link">&larr; Kembali ke Halaman Utama</a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesona Wisata Bali - Luis Marcello</title>
+    <style>
+        /* biar pas klik menu nggak loncat kasar */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* setting dasar */
+*{
+  margin:0;
+  padding: 0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+body {
+ background:#FDFBF7;
+ color:#333;
+ line-height:1.6;
+}
+a {text-decoration:none;color:inherit;}
+
+        /* bagian header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2E4A3D; 
+            color: white;
+            padding: 20px 50px;
+        }
+        .header-left img {
+            width: 120px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .header-right {
+            text-align: right;
+        }
+        .header-right h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #FDFBF7;
+        }
+        .header-right p {
+            font-size: 12px;
+            color: #DDE5E0;
+        }
+
+        /* menu */
+        .navbar {
+            background-color: #3A5A4A; 
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar a {
+            color: white;
+            padding: 10px 25px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #D35400; /* Oranye Terakota Bata Pura */
+            border-radius: 4px;
+        }
+
+        /* isi utama */
+.container{
+ display:flex;
+ max-width:1200px;
+ margin:20px auto;
+ gap:20px;
+ padding:0 20px;
+}
+
+.left-col{flex:3;}
+        .left-col h2 {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: #2E4A3D;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            border-bottom: 3px solid transparent;
+            transition: border-color 0.3s;
+        }
+        .card:hover {
+            border-color: #D35400;
+        }
+        
+        /* efek gambar */
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            opacity: 0.8;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .card:hover img {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        .card h3 {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #D35400;
+        }
+        .card p {
+            font-size: 12px;
+            color: #666;
+        }
+
+.right-col{
+ flex:1;
+ display:flex;
+ flex-direction:column;
+ gap:20px;
+}
+        .sidebar-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            scroll-margin-top: 60px; /* Jarak scroll saat diklik dari navbar */
+        }
+        .sidebar-section h3 {
+            font-size: 16px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            color: #2E4A3D;
+        }
+        .sidebar-section p {
+            font-size: 13px;
+            color: #555;
+        }
+        .sidebar-section ul {
+            list-style: none;
+        }
+        .sidebar-section ul li {
+            margin-bottom: 10px;
+        }
+        .sidebar-section ul li a {
+            font-size: 13px;
+            color: #2E4A3D;
+            transition: color 0.3s;
+        }
+        .sidebar-section ul li a:hover {
+            color: #D35400;
+        }
+
+        .footer {
+            background-color: #2E4A3D;
+            color: white;
+            margin-top: 40px;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .footer-col h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #F39C12;
+        }
+        .footer-col p, .footer-col ul li a {
+            font-size: 13px;
+            color: #DDE5E0;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+        .footer-bottom {
+            background-color: #1F332A;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 12px;
+            color: #AAB9B0;
+        }
+
+        /* popup buat identitas */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal:target {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            width: 400px;
+            border-radius: 10px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-top: 5px solid #D35400;
+        }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+        .modal-content img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #D35400;
+            margin-bottom: 15px;
+        }
+        .modal-content h2 {
+            margin-bottom: 20px;
+            color: #2E4A3D;
+        }
+        .profile-table {
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        .profile-table th, .profile-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .profile-table th {
+            width: 30%;
+            color: #555;
+        }
+        .profile-table td {
+            font-weight: bold;
+            color: #2E4A3D;
+        }
+            /* beberapa style masih sengaja simpel */
+    </style>
+</head>
+<body>
+
+    <!-- header -->
+<header class="header">
+  <div class="header-left">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxyHQwZaYJ6c-U-sb_7pHnyKAzWoLL_iPrB2Yi8dA5kVNgvJGcrpD0Y7Y&s=10" alt="Logo Wisata">
+  </div>
+  <div class="header-right">
+    <h1>Pesona Wisata Bali</h1>
+    <p>Eksplorasi Keindahan Alam dan Budaya Pulau Dewata</p>
+  </div>
+</header>
+
+    <!-- navigasi -->
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="#about-section">About</a>
+        <a href="#services-section">Services</a>
+        <a href="blog.html">Blog</a>
+        <a href="#contactModal">Contact</a>
+    </nav>
+
+    <!-- konten -->
+    <div class="container">
+        <!-- sebelah kiri -->
+        <div class="left-col">
+            <h2>Destinasi Terbaru</h2>
+            <div class="gallery-grid">
+                <div class="card">
+                    <img src="https://i2.wp.com/blog.tripcetera.com/id/wp-content/uploads/2020/03/leebudihart_76864081_2484833498431751_3194446755026370817_n.jpg" alt="Pantai Kuta">
+                    <h3>Pantai Kuta</h3>
+                    <p>Terkenal dengan pemandangan matahari terbenamnya yang indah, Pantai Kuta adalah ikon pariwisata Bali yang memukau.</p>
+                </div>
+                <div class="card">
+                    <img src="https://cdn.getyourguide.com/image/format=avif%2Cfit=cover%2Cgravity=auto%2Cquality=60/dam/iStock-2096414673-HeaderMobile.jpg" alt="Ubud">
+                    <h3>Pesona Alam Ubud</h3>
+                    <p>Menawarkan ketenangan dengan hamparan sawah terasering Tegalalang dan pusat kerajinan seni tradisional Bali.</p>
+                </div>
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh2Hx5eKyvq86o5FwXtwQzdQc5XTCacLxjK0ZCBmoQ2THQBjPVoihvKZc8&s=10" alt="Pura Uluwatu">
+                    <h3>Pura Uluwatu</h3>
+                    <p>Berdiri megah di atas tebing karang, pura ini menawarkan pertunjukan Tari Kecak dengan latar belakang samudra.</p>
+                </div>
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtFpmfUPmQPJB_rUMpe1UlGy2ov8znawBBH71jXJgmW17zjgMTGQvZ-Ck&s=10" alt="Nusa Penida">
+                    <h3>Nusa Penida</h3>
+                    <p>Pulau indah di sebelah tenggara Bali dengan tebing ikonik berbentuk T-Rex di Pantai Kelingking yang spektakuler.</p>
+                </div>
+                <div class="card">
+                    <img src="https://ik.imgkit.net/tvlk/blog/2021/08/Destinasi-Wisata-di-Kintamani-Pura-Ulun-Danu-Batur-Shutterstock.jpg?tr=q-70,c-at_max,w-1000,h-600" alt="Danau Batur">
+                    <h3>Kintamani & Batur</h3>
+                    <p>Nikmati sejuknya udara pegunungan sambil memandangi kemegahan Gunung Batur dan Danau Batur.</p>
+                </div>
+                <div class="card">
+                    <img src="https://www.rentalmobilbali.net/wp-content/uploads/2022/09/feature-image-pura-ulun-danu-beratan-bedugul.webp" alt="Pura Ulun Danu">
+                    <h3>Ulun Danu Beratan</h3>
+                    <p>Pura suci Hindu yang terletak di tengah Danau Beratan, Bedugul. Suasananya sejuk dan sangat fotogenik.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- sidebar -->
+        <div class="right-col">
+            <!-- about -->
+            <div id="about-section" class="sidebar-section">
+                <h3>Informasi Wisata (About)</h3>
+                <p>Bali adalah sebuah provinsi di Indonesia yang terletak pada bagian barat Kepulauan Nusa Tenggara yang dahulu dikenal sebagai Kepulauan Sunda Kecil. Provinsi Bali berada di sebelah timur Pulau Jawa dan sebelah barat Pulau Lombok. Ibu kota sekaligus kota terbesarnya adalah Kota Denpasar.</p>
+            </div>
+
+            <!-- services -->
+            <div id="services-section" class="sidebar-section">
+                <h3>Navigasi Lokal (Services)</h3>
+                <ul>
+                    <li><a href="index.html">Home Page</a></li>
+                    <li><a href="#about-section">Tentang Kami</a></li>
+                    <li><a href="#services-section">Paket Wisata</a></li>
+                    <li><a href="#contactModal">Hubungi Kami</a></li>
+                </ul>
+            </div>
+
+            <!-- link luar -->
+            <div class="sidebar-section">
+                <h3>Situs Eksternal</h3>
+                <ul>
+                    <li><a href="https://www.lipsum.com/" target="_blank">Lorem Ipsum Official</a></li>
+                    <li><a href="https://www.google.com/" target="_blank">Google Search</a></li>
+                    <li><a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+  <div class="footer-top">
+            <div class="footer-col">
+                <h3>Tentang Bali</h3>
+                <p> Website Ini Mengenalkan Bali adalah sebuah provinsi di Indonesia yang terletak di sebelah timur Pulau Jawa dan barat Pulau Lombok, dengan Kota Denpasar sebagai ibu kotanya. Pulau ini dikenal luas dengan julukan "Pulau Dewata" dan "Pulau Seribu Pura".</p>
+            </div>
+            <div class="footer-col">
+                <h3>Tautan Cepat</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about-section">About</a></li>
+                    <li><a href="#services-section">Services</a></li>
+                    <li><a href="#contactModal">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Kontak Informasi</h3>
+                <p>Email: luis.825250016@stu.untar.ac.id</p>
+                <p>Phone: +62 822 5657 6356</p>
+                <p>Address: Jl. Raya Ubud No. 88, Gianyar, Bali</p>
+            </div>
+        </div>
+  <div class="footer-bottom">
+            <p>&copy; 2026 Pariwisata Bali. All rights reserved. | Crafted by Luis Marcello</p>
+        </div>
+    </footer>
+
+    <!-- popup -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            
+            <!-- foto -->
+            <img src="foto-luis.png" alt="Foto Luis Marcello">
+            
+            <h2>Profil Mahasiswa</h2>
+            <table class="profile-table">
+                <tr>
+                    <th>NIM</th>
+                    <td>825250016</td>
+                </tr>
+                <tr>
+                    <th>Nama</th>
+                    <td>Luis Marcello</td>
+                </tr>
+                <tr>
+                    <th>Kelas</th>
+                    <td>SI A</td>
+                </tr>
+            </table>
+        </div>
+ </div>
+
+</body>
+</html>
